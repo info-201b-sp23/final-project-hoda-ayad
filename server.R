@@ -1,5 +1,6 @@
 library(ggplot2)
 library(dplyr)
+library(plotly)
 library(RColorBrewer)
 
 titles_df <- read.csv("titles.csv")
@@ -25,7 +26,7 @@ server <- function(input, output) {
       filter(!!type_filter, !!genre_filter) %>% 
       summarise(count = n()) 
     
-    ggplot(chart_df, aes(release_year, count, color = genres)) +
+    ggplotly(chart_df, aes(release_year, count, color = genres)) +
       geom_line(stat = "summary", fun = sum) +
       labs(title = "Genres of Netflix Media over Time",
            subtitle = "Includes only media released after the year 2000",

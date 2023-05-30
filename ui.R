@@ -79,5 +79,6 @@ Movies_VS_Shows <- tabPanel(
 ui <- navbarPage(
   "Title",
   intro_panel,
-  genre_panel
+  genre_panel,
+  Movies_VS_Shows
 )
