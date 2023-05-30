@@ -1,6 +1,7 @@
 library(ggplot2)
 library(dplyr)
 library(plotly)
+library(tidyr)
 library(RColorBrewer)
 
 titles_df <- read.csv("titles.csv")
@@ -35,7 +36,7 @@ server <- function(input, output) {
            color = "Genre")
   })
 
-# Trends in Movies and Shows production in 21st century plot
+  # Trends in Movies and Shows production in 21st century plot
   output$MoviesShows_chart <- renderPlotly({
     low_year <- input$year_selection[1]
     high_year <- input$year_selection[2]
@@ -53,7 +54,7 @@ server <- function(input, output) {
       geom_line(aes(x = release_year, y = num_media, color = type)) +
       scale_color_brewer(palette = "Set2") +
       labs(title = "Trends in Release of Movies and Shows", x = "Release Year", 
-           y = "Number of Media Released", color="Type")
+           y = "Number of Media Released", color = "Media Type")
     
     ggplotly(MoviesVSShows_ggplot)
   })
