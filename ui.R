@@ -3,6 +3,11 @@ source('server.R')
 titles_df <- read.csv("titles.csv")
 credits_df <- read.csv("credits.csv")
 
+recent_titles_df <- titles_df %>%
+  arrange(release_year) %>%
+  filter(release_year >= 2000)
+
+
 intro_panel <- tabPanel (
   "Introduction",
   titlePanel("[INSERT TITLE]"),
@@ -44,6 +49,32 @@ genre_panel <- tabPanel(
     genre_sidebar, genre_main
   )
 )
+
+Movies_VS_Shows <- tabPanel(
+  "Movies Vs. Shows",
+  h1("Movies Vs. Shows Visualization", align="center"),
+  plotlyOutput("MoviesShows_chart"),
+  select_widget <-
+    selectInput(
+      inputId = "title_selection",
+      label = "Movie/Show Titles",
+      choices = recent_titles_df$title,
+      selectize = TRUE,
+      multiple = TRUE),
+  
+  slider_widget <- sliderInput(
+    inputId = "year_selection",
+    label = "Year",
+    min = min(recent_titles_df$year),
+    max = max(recent_titles_df$year),
+    value = c(2000, 2021),
+    sep = ""),
+  h2("Findings and Conclusion", align="left"),
+  p("Blah blah blah")
+)
+
+
+
 
 ui <- navbarPage(
   "Title",

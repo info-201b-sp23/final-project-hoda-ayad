@@ -33,6 +33,27 @@ server <- function(input, output) {
            y = "Number of Media on Netflix",
            color = "Genre")
   })
-  
+
+# Trends in Movies and Shows production in 21st century plot
+  output$MoviesShows_chart <- renderPlot({
+    
+    recent_titles_df <- titles_df %>% 
+      group_by(release_year, type) %>%
+      filter(release_year >= 2000) %>%
+      summarize(num_media = n())
+    
+    viz_chart <- recent_titles_df %>%
+      filter(type %in% c("MOVIE", "SHOW"))
+    
+    MoviesVSShows_ggplot <- ggplot(viz_chart) +
+      geom_line(aes(x = release_year, y = num_media, color = type)) +
+      scale_color_brewer(palette = "Set2") +
+      labs(title = "Trends in Release of Movies and Shows", x = "Release Year", 
+           y = "Number of Media Released")
+    
+    MoviesShows_chart <- ggplotly(MoviesVSShows_ggplot)
+ 
+  return(MoviesShows_chart)
+  })
   
 }
