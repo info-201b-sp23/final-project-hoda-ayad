@@ -3,10 +3,10 @@ source('server.R')
 titles_df <- read.csv("titles.csv")
 credits_df <- read.csv("credits.csv")
 
-recent_titles_df <- titles_df %>% 
-  group_by(release_year, type) %>%
-  filter(release_year >= 2000) %>%
-  summarize(num_media = n())
+    recent_titles_df <- titles_df %>% 
+      group_by(release_year, type) %>%
+      filter(release_year >= 2000) %>%
+      summarize(num_media = n())
 
 intro_panel <- tabPanel (
   "Introduction",
@@ -16,7 +16,7 @@ intro_panel <- tabPanel (
   p(strong("Abstract")),
   
 
-  P("Having big names in the cast has always been a key marketing tactic for movies and TV shows alike, but does this strategy actually work? We intend to use the metadata of the shows and movies published on Netflix as of July 2022 to determine whether the major actor(s) credited in a piece of media is a significant indicator of a higher IMDb score as a representation of general reception. Considering there are many different contributing factors to IMDb scores, we will also take into account the number of votes on IMDb, the release year, and the maturity rating of the work to compare the impact on reception."),
+  p("Having big names in the cast has always been a key marketing tactic for movies and TV shows alike, but does this strategy actually work? We intend to use the metadata of the shows and movies published on Netflix as of July 2022 to determine whether the major actor(s) credited in a piece of media is a significant indicator of a higher IMDb score as a representation of general reception. Considering there are many different contributing factors to IMDb scores, we will also take into account the number of votes on IMDb, the release year, and the maturity rating of the work to compare the impact on reception."),
   
   br(),
   
@@ -57,7 +57,7 @@ genre_sidebar <- sidebarPanel(
 )
 
 genre_main <- mainPanel(
-  plotOutput("genre_plot")
+  plotlyOutput("genre_plot")
 )
 
 genre_panel <- tabPanel(
@@ -70,7 +70,6 @@ genre_panel <- tabPanel(
 )
 
 mvs_sidebar <- sidebarPanel(
-  
   slider_widget <- sliderInput(
     inputId = "year_selection",
     label = "Year",
@@ -81,15 +80,21 @@ mvs_sidebar <- sidebarPanel(
 )
 
 mvs_main <- mainPanel(
-  plotlyOutput("MoviesShows_chart")
+  plotlyOutput("imdb_chart")
 )
 
-Movies_VS_Shows <- tabPanel(
-  "Movies Vs. Shows",
-  h1("Movies Vs. Shows Visualization", align="center"),
+IMDb_Scores <- tabPanel(
+  "IMDB Scores of Movies and Shows",
+  h1("Visualization of IMDB Scores of Shows and Movies", align="center"),
   sidebarLayout(
     mvs_sidebar, mvs_main
-  )
+  ),
+  h2("Explanation of Graph", align="left"),
+  p("The purpose of this data visualization is to show trends in the average 
+    IMDB scores of shows and movies during the 21st century. This is to 
+    determine and understand the overall data trends in how successful shows and 
+    movies have fared, which would be measured by the scores of each media type 
+    each year, from 2000 to 2022.")
 )
 
 concl_panel <- tabPanel(
