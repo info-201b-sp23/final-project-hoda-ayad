@@ -40,7 +40,7 @@ genre_sidebar <- sidebarPanel(
 )
 
 genre_main <- mainPanel(
-  plotOutput("genre_plot")
+  plotlyOutput("genre_plot")
 )
 
 genre_panel <- tabPanel(

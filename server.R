@@ -17,7 +17,7 @@ possible_genres <- unique(genre_separated_df$genres)
 server <- function(input, output) {
   
   # Genres Over Time Plot 
-  output$genre_plot <- renderPlot({
+  output$genre_plot <- renderPlotly({
     type_filter <- quo(type %in% input$type_select) # use input vector to parse through type to include
     genre_filter <- quo(genres %in% input$genre_select) # use input vector to parse through genres to include
     
@@ -27,13 +27,14 @@ server <- function(input, output) {
       filter(!!type_filter, !!genre_filter) %>% 
       summarise(count = n()) 
     
-    ggplot(chart_df, aes(release_year, count, color = genres)) +
+    genre_ggplot <- ggplot(chart_df, aes(release_year, count, color = genres)) +
       geom_line(stat = "summary", fun = sum) +
       labs(title = "Genres of Netflix Media over Time",
            subtitle = "Includes only media released after the year 2000",
            x = "Release Year",
            y = "Number of Media on Netflix",
            color = "Genre")
+    ggplotly(genre_ggplot)
   })
 
   # Trends in Movies and Shows production in 21st century plot
