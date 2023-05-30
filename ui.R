@@ -53,6 +53,13 @@ genre_panel <- tabPanel(
 )
 
 mvs_sidebar <- sidebarPanel(
+  select_widget <-
+    selectInput(
+     inputId = "title_selection",
+     label = "Movie/Show Titles",
+     choices = recent_titles_df$title,
+     selectize = TRUE,
+     multiple = TRUE),
   
   slider_widget <- sliderInput(
     inputId = "year_selection",
