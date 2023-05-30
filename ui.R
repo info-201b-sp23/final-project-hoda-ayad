@@ -67,9 +67,9 @@ mvs_main <- mainPanel(
   plotlyOutput("imdb_chart")
 )
 
-Movies_VS_Shows <- tabPanel(
-  "Movies Vs. Shows",
-  h1("Movies Vs. Shows Visualization", align="center"),
+IMDb_Scores <- tabPanel(
+  "IMDB Scores of Movies and Shows",
+  h1("Visualization of IMDB Scores of Shows and Movies", align="center"),
   sidebarLayout(
     mvs_sidebar, mvs_main
   ),
@@ -85,6 +85,6 @@ ui <- navbarPage(
   "Movie Stars to 5 Stars: Actor Credits as Indicators of IMDb Score",
   intro_panel,
   genre_panel,
-  Movies_VS_Shows
+  IMDb_Scores
 )
 
