@@ -3,6 +3,11 @@ source('server.R')
 titles_df <- read.csv("titles.csv")
 credits_df <- read.csv("credits.csv")
 
+    recent_titles_df <- titles_df %>% 
+      group_by(release_year, type) %>%
+      filter(release_year >= 2000) %>%
+      summarize(num_media = n())
+
 intro_panel <- tabPanel (
   "Introduction",
   titlePanel("Introduction Page"),
@@ -67,6 +72,8 @@ intro_panel <- tabPanel (
   p(strong("What, if any, ethical questions or questions of power do you need to consider when working with this data?")),
 
   p("There seems to be no ethical questions or questions of power to consider when working with the data."),
+  
+  br(),
 
   p(strong("Limitations & Challenges")),
   
