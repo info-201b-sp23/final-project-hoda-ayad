@@ -3,10 +3,10 @@ source('server.R')
 titles_df <- read.csv("titles.csv")
 credits_df <- read.csv("credits.csv")
 
-recent_titles_df <- titles_df %>% 
-  group_by(release_year, type) %>%
-  filter(release_year >= 2000) %>%
-  summarize(num_media = n())
+    recent_titles_df <- titles_df %>% 
+      group_by(release_year, type) %>%
+      filter(release_year >= 2000) %>%
+      summarize(num_media = n())
 
 intro_panel <- tabPanel (
   "Introduction",
@@ -62,7 +62,7 @@ mvs_sidebar <- sidebarPanel(
 )
 
 mvs_main <- mainPanel(
-  plotlyOutput("MoviesShows_chart")
+  plotlyOutput("imdb_chart")
 )
 
 Movies_VS_Shows <- tabPanel(
@@ -70,7 +70,13 @@ Movies_VS_Shows <- tabPanel(
   h1("Movies Vs. Shows Visualization", align="center"),
   sidebarLayout(
     mvs_sidebar, mvs_main
-  )
+  ),
+  h2("Explanation of Graph", align="left"),
+  p("The purpose of this data visualization is to show trends in the average 
+    IMDB scores of shows and movies during the 21st century. This is to 
+    determine and understand the overall data trends in how successful shows and 
+    movies have fared, which would be measured by the scores of each media type 
+    each year, from 2000 to 2022.")
 )
 
 ui <- navbarPage(
