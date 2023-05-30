@@ -3,11 +3,6 @@ source('server.R')
 titles_df <- read.csv("titles.csv")
 credits_df <- read.csv("credits.csv")
 
-    recent_titles_df <- titles_df %>% 
-      group_by(release_year, type) %>%
-      filter(release_year >= 2000) %>%
-      summarize(num_media = n())
-
 intro_panel <- tabPanel (
   "Introduction",
   titlePanel("Introduction Page"),
