@@ -26,7 +26,7 @@ server <- function(input, output) {
       filter(!!type_filter, !!genre_filter) %>% 
       summarise(count = n()) 
     
-    ggplotly(chart_df, aes(release_year, count, color = genres)) +
+    ggplot(chart_df, aes(release_year, count, color = genres)) +
       geom_line(stat = "summary", fun = sum) +
       labs(title = "Genres of Netflix Media over Time",
            subtitle = "Includes only media released after the year 2000",
@@ -36,7 +36,10 @@ server <- function(input, output) {
   })
 
 # Trends in Movies and Shows production in 21st century plot
-  output$MoviesShows_chart <- renderPlot({
+  output$MoviesShows_chart <- renderPlotly({
+    low_year <- input$year_selection[1]
+    high_year <- input$year_selection[2]
+    
     
     recent_titles_df <- titles_df %>% 
       group_by(release_year, type) %>%
@@ -44,7 +47,7 @@ server <- function(input, output) {
       summarize(num_media = n())
     
     viz_chart <- recent_titles_df %>%
-      filter(type %in% c("MOVIE", "SHOW"))
+      filter(release_year >= low_year, release_year <= high_year)
     
     MoviesVSShows_ggplot <- ggplot(viz_chart) +
       geom_line(aes(x = release_year, y = num_media, color = type)) +
@@ -52,9 +55,7 @@ server <- function(input, output) {
       labs(title = "Trends in Release of Movies and Shows", x = "Release Year", 
            y = "Number of Media Released")
     
-    MoviesShows_chart <- ggplotly(MoviesVSShows_ggplot)
- 
-  return(MoviesShows_chart)
+    ggplotly(MoviesVSShows_ggplot)
   })
   
 }
