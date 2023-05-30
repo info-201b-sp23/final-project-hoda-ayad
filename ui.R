@@ -3,10 +3,6 @@ source('server.R')
 titles_df <- read.csv("titles.csv")
 credits_df <- read.csv("credits.csv")
 
-recent_titles_df <- titles_df %>%
-  arrange(release_year) %>%
-  filter(release_year >= 2000)
-
 
 intro_panel <- tabPanel (
   "Introduction",
@@ -22,9 +18,9 @@ genre_sidebar <- sidebarPanel(
   checkboxGroupInput(
     "type_select",
     label = "Select type(s) to include",
-    choices = list("Shows" = "SHOW", "Movies" = "MOVIE"),
+    choices = list("Movies" = "MOVIE", "Shows" = "SHOW"),
     selected = "MOVIE"
-    ),
+  ),
   
   selectInput(
     inputId = "genre_select",
@@ -50,30 +46,36 @@ genre_panel <- tabPanel(
   )
 )
 
-Movies_VS_Shows_panel <- tabPanel(
-  "IMDB Scores of Shows in 21st Century",
-  h1("Shows IMDB Score Visualization", align="center"),
-  plotlyOutput("Shows_chart"),
-  select_widget <-
-    selectInput(
-      inputId = "title_selection",
-      label = "Show Titles",
-      choices = shows_df$title,
-      selectize = TRUE,
-      multiple = TRUE),
+mvs_sidebar <- sidebarPanel(
   
   slider_widget <- sliderInput(
     inputId = "year_selection",
-    label = "Year Show was Scored",
-    min = min(shows_df$year),
-    max = max(shows_df$year),
-    value = c(2000, 2021),
+    label = "Year",
+    min = min(recent_titles_df$release_year),
+    max = max(recent_titles_df$release_year),
+    value = c(min(recent_titles_df$release_year), max(recent_titles_df$release_year)),
     sep = "")
 )
+
+mvs_main <- mainPanel(
+  plotlyOutput("MoviesShows_chart")
+)
+
+Movies_VS_Shows <- tabPanel(
+  "Movies Vs. Shows",
+  h1("Movies Vs. Shows Visualization", align="center"),
+  sidebarLayout(
+    mvs_sidebar, mvs_main
+  ),
+  h2("Findings and Conclusion", align="left"),
+  p("Blah blah blah")
+)
+
 
 ui <- navbarPage(
   "Title",
   intro_panel,
   genre_panel,
-  Movies_VS_Shows_panel
+  Movies_VS_Shows
 )
+
