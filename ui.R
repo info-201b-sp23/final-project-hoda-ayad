@@ -50,7 +50,7 @@ genre_panel <- tabPanel(
   )
 )
 
-Movies_VS_Shows <- tabPanel(
+Movies_VS_Shows_panel <- tabPanel(
   "Movies Vs. Shows",
   h1("Movies Vs. Shows Visualization", align="center"),
   plotlyOutput("MoviesShows_chart"),
@@ -80,5 +80,5 @@ ui <- navbarPage(
   "Title",
   intro_panel,
   genre_panel,
-  Movies_VS_Shows
+  Movies_VS_Shows_panel
 )
