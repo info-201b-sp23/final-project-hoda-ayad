@@ -54,7 +54,7 @@ server <- function(input, output) {
       geom_line(aes(x = release_year, y = num_media, color = type)) +
       scale_color_brewer(palette = "Set2") +
       labs(title = "Trends in Release of Movies and Shows", x = "Release Year", 
-           y = "Number of Media Released")
+           y = "Number of Media Released", color = "Media Type")
     
     ggplotly(MoviesVSShows_ggplot)
   })
