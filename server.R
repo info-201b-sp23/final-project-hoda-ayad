@@ -37,25 +37,25 @@ server <- function(input, output) {
   })
 
 # Trends in Movies and Shows production in 21st century plot
-  output$MoviesShows_chart <- renderPlot({
+  output$Shows_chart <- renderPlot({
     
     recent_titles_df <- titles_df %>% 
-      group_by(release_year, type) %>%
-      filter(release_year >= 2000) %>%
-      summarize(num_media = n())
+      arrange(release_year) %>%
+      filter(release_year >= 2000) 
     
-    viz_chart <- recent_titles_df %>%
-      filter(type %in% c("MOVIE", "SHOW"))
+    shows_df <- recent_titles_df %>%
+      filter(type %in% "SHOW")
     
-    MoviesVSShows_ggplot <- ggplot(viz_chart) +
-      geom_line(aes(x = release_year, y = num_media, color = type)) +
-      scale_color_brewer(palette = "Set2") +
-      labs(title = "Trends in Release of Movies and Shows", x = "Release Year", 
-           y = "Number of Media Released")
+    movies_df <- recent_titles_df %>%
+      filter(type %in% "MOVIE")
     
-    MoviesShows_chart <- ggplotly(MoviesVSShows_ggplot)
+    show_ggplot <- ggplot(shows_df) +
+      geom_line(aes(x = release_year, y = imdb_score, color = title)) +
+      labs(title = "Trends in IMDB scores of Shows", x = "Release Year", 
+           y = "IMDB Score")
+    Shows_chart <- ggplotly(show_ggplot)
  
-  return(MoviesShows_chart)
+  return(Shows_chart)
   })
   
 }

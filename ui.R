@@ -51,30 +51,25 @@ genre_panel <- tabPanel(
 )
 
 Movies_VS_Shows_panel <- tabPanel(
-  "Movies Vs. Shows",
-  h1("Movies Vs. Shows Visualization", align="center"),
-  plotlyOutput("MoviesShows_chart"),
+  "IMDB Scores of Shows in 21st Century",
+  h1("Shows IMDB Score Visualization", align="center"),
+  plotlyOutput("Shows_chart"),
   select_widget <-
     selectInput(
       inputId = "title_selection",
-      label = "Movie/Show Titles",
-      choices = recent_titles_df$title,
+      label = "Show Titles",
+      choices = shows_df$title,
       selectize = TRUE,
       multiple = TRUE),
   
   slider_widget <- sliderInput(
     inputId = "year_selection",
-    label = "Year",
-    min = min(recent_titles_df$year),
-    max = max(recent_titles_df$year),
+    label = "Year Show was Scored",
+    min = min(shows_df$year),
+    max = max(shows_df$year),
     value = c(2000, 2021),
-    sep = ""),
-  h2("Findings and Conclusion", align="left"),
-  p("Blah blah blah")
+    sep = "")
 )
-
-
-
 
 ui <- navbarPage(
   "Title",
