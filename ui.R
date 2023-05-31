@@ -56,7 +56,7 @@ mvs_sidebar <- sidebarPanel(
     min = min(recent_titles_df$release_year),
     max = max(recent_titles_df$release_year),
     value = c(min(recent_titles_df$release_year), max(recent_titles_df$release_year)),
-    round = TRUE,
+    step = 1,
     sep = "")
 )
 
