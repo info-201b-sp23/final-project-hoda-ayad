@@ -1,0 +1,16 @@
+---
+title: "conclusion"
+output: html_document
+date: "2023-05-31"
+---
+
+### Anaylsis: How does Genre Vary by Release Year?
+
+### Analysis: Trends in IMDB Scores of Shows and Movies
+
+### Analysis: 
+
+
+### Most Important Insights 
+
+### Broader Implications 

@@ -78,9 +78,10 @@ IMDb_Scores <- tabPanel(
 )
 
 concl_panel <- tabPanel(
-  "Conlcusion",
+  "Conclusion",
   titlePanel("Conclusion and Summary Takeaways"),
-  br(), 
+  
+  includeMarkdown("conclusion.Rmd")
   
 )
 ui <- navbarPage(
