@@ -56,6 +56,7 @@ mvs_sidebar <- sidebarPanel(
     min = min(recent_titles_df$release_year),
     max = max(recent_titles_df$release_year),
     value = c(min(recent_titles_df$release_year), max(recent_titles_df$release_year)),
+    round = TRUE,
     sep = "")
 )
 
@@ -77,6 +78,17 @@ IMDb_Scores <- tabPanel(
     each year, from 2000 to 2022.")
 )
 
+genre_prop_plot <- mainPanel(
+  plotlyOutput("age_prop_chart")
+)
+
+genre_prop_tab <- tabPanel(
+  "Proportion of age rating over time",
+  sidebarLayout(
+    mvs_sidebar, genre_prop_plot
+  )
+)
+
 concl_panel <- tabPanel(
   "Conclusion",
   titlePanel("Conclusion and Summary Takeaways"),
@@ -88,6 +100,7 @@ ui <- navbarPage(
   "Movie Stars to 5 Stars: Actor Credits as Indicators of IMDb Score",
   intro_panel,
   genre_panel,
+  genre_prop_tab,
   IMDb_Scores,
   concl_panel
 )

@@ -59,5 +59,50 @@ server <- function(input, output) {
     
     ggplotly(imdb_ggplot)
   })
+  
+  # Age rating proportions over time
+  output$age_prop_chart <- renderPlotly({
+    age_cert_per_year <- titles_df %>% 
+      filter(release_year > input$year_selection[1] & 
+               release_year < input$year_selection[2]) %>%
+      group_by(release_year, age_certification) %>% summarize(sum=n_distinct(id))
+    
+    unrated <- age_cert_per_year %>% filter(nchar(age_certification) == 0) %>%
+      mutate(age_certification="Unrated")
+    
+    age_cert_per_year <- age_cert_per_year %>% filter(!nchar(age_certification) == 0)
+    
+    children <- age_cert_per_year %>% 
+      filter(age_certification %in% c("G", "PG", "TV-G", "TV-Y", "TV-Y7")) %>% 
+      mutate(age_certification="Children")
+    
+    teen <- age_cert_per_year %>% 
+      filter(age_certification %in% c("PG-13", "TV-14")) %>% 
+      mutate(age_certification="Teen")
+    
+    adult <- age_cert_per_year %>% 
+      filter(age_certification %in% c("TV-MA", "R", "NC-17")) %>% 
+      mutate(age_certification="Adult")
+    
+    age_cert_per_year <- full_join(children, teen)
+    age_cert_per_year <- full_join(age_cert_per_year, adult)
+    age_cert_per_year <- full_join(age_cert_per_year, unrated)
+    
+    age_cert_per_year <- age_cert_per_year %>% mutate(total=sum(sum)) %>%
+      mutate(prop=sum/total, .before = total)
+    
+    age_cert_prop_chart <- ggplot(age_cert_per_year, 
+                         aes(x=release_year, y=prop, fill=age_certification)) +
+      
+      geom_bar(position="stack", stat="identity")+
+      scale_y_continuous(labels = scales::percent) +
+      scale_x_continuous(breaks = seq(input$year_selection[1], 
+                                      input$year_selection[2], 
+                                      ceiling((input$year_selection[2] - input$year_selection[1]) / 4))) +
+      labs(x = "Year", y = "Proportion",
+           title = "Age rating proportion")
+    
+    ggplotly(age_cert_prop_chart)
+  })
 
 }
