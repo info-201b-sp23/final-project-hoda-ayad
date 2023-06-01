@@ -63,8 +63,8 @@ server <- function(input, output) {
   # Age rating proportions over time
   output$age_prop_chart <- renderPlotly({
     age_cert_per_year <- titles_df %>% 
-      filter(release_year > input$year_selection[1] & 
-               release_year < input$year_selection[2]) %>%
+      filter(release_year > input$genre_prop_year_selection[1] & 
+               release_year < input$genre_prop_year_selection[2]) %>%
       group_by(release_year, age_certification) %>% summarize(sum=n_distinct(id))
     
     unrated <- age_cert_per_year %>% filter(nchar(age_certification) == 0) %>%
@@ -96,9 +96,9 @@ server <- function(input, output) {
       
       geom_bar(position="stack", stat="identity")+
       scale_y_continuous(labels = scales::percent) +
-      scale_x_continuous(breaks = seq(input$year_selection[1], 
-                                      input$year_selection[2], 
-                                      ceiling((input$year_selection[2] - input$year_selection[1]) / 4))) +
+      scale_x_continuous(breaks = seq(input$genre_prop_year_selection[1], 
+                                      input$genre_prop_year_selection[2], 
+                                      ceiling((input$genre_prop_year_selection[2] - input$genre_prop_year_selection[1]) / 4))) +
       labs(x = "Year", y = "Proportion",
            title = "Age rating proportion")
     
