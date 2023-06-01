@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Movie and TV Series Trends on Netflix
+=======
+# Movie and TV Series Trends On Netflix
+>>>>>>> c6486e0a107ea94bc2aa103b618145dd4e769c01
 ## INFO 201 "Foundational Skills for Data Science" — Spring 2023
 
  - [Harry Fung](mailto:yfung3@uw.edu)

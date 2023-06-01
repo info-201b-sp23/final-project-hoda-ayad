@@ -65,7 +65,7 @@ genre_panel <- tabPanel(
     genre_sidebar, genre_main
   ),
   h2("Explanation of Graph", align="left"),
-  p("As media is released over time, what genres dominate in popularity (so that Netflix will buy the rights to them)? This graph explores the release of different genres from 2000-2023, including movies and/or shows. The data is not normalized considering that media is assigned multiple categories and therefore overlapping.")
+  p("As media is released over time, what genres dominate in popularity (so that Netflix will buy the rights to them)? This graph explores the release of different genres from 2000-2022, including movies and/or shows. The data is not normalized considering that media is assigned multiple categories and therefore overlapping.")
 )
 
 mvs_sidebar <- sidebarPanel(
@@ -120,7 +120,7 @@ age_prop_tab <- tabPanel(
   ),
   h2("Explanation of Graph", align="left"),
   p("This chart shows the distribution of age rating and their relative proportion
-    to each other in the years between 2000-2023. We choose this graph as we wanted 
+    to each other in the years between 2000-2022. We choose this graph as we wanted 
     to see how trend in the change in age ratings for movies and TV shows in recent years. 
     It shows that in recent years, the proportion of content created for children and 
     teens have decreased, compared to adult and unrated content.")
