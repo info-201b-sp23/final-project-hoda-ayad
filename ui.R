@@ -7,7 +7,7 @@ library(markdown)
 titles_df <- read.csv("titles.csv")
 credits_df <- read.csv("credits.csv")
 
-my_theme <- bs_theme(version = 4, bootswatch = "flatly", primary = "#000000", success = "#E50914")
+my_theme <- bs_theme(version = 3, bootswatch = "flatly", primary = "#000000", success = "#E50914")
 
 
 recent_titles_df <- titles_df %>% 
@@ -15,22 +15,20 @@ recent_titles_df <- titles_df %>%
   filter(release_year >= 2000) %>%
   summarize(num_media = n())
 
-intro_panel <- tabPanel (
+intro_panel <- tabPanel(
   "Introduction",
   titlePanel("Introduction"),
   
   sidebarPanel(
     img(src = "https://www.freepnglogos.com/uploads/netflix-logo-text-emblem-31.png", width = "100%", height = "100%"),
+    br(),
     img(src = "https://www.freepnglogos.com/uploads/film-reel-png/film-reel-the-movies-owens-valley-12.png", width = "100%", height = "100%"),
-    width = 1
-    
+    width = 2
   ),
   
   mainPanel(
     includeMarkdown("introduction.Rmd"),
-    width = 10
   )
-
 )
 
 # Genre Chart Sidebar
@@ -136,12 +134,12 @@ concl_panel <- tabPanel(
   
 )
 ui <- navbarPage(
+  theme = my_theme,
   "Movie and TV Series Trends on Netflix",
   intro_panel,
   genre_panel,
   age_prop_tab,
   IMDb_Scores,
   concl_panel,
-  theme = my_theme
 )
 

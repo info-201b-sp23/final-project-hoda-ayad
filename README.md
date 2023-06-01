@@ -1,4 +1,4 @@
-# Movie Stars to 5 Stars: Actor Credits as Indicators of IMDb Score
+# Movie and TV Series Trends on Netflix
 ## INFO 201 "Foundational Skills for Data Science" — Spring 2023
 
  - [Harry Fung](mailto:yfung3@uw.edu)
