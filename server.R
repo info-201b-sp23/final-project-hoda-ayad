@@ -55,12 +55,15 @@ server <- function(input, output) {
       filter(release_year >= low_year, release_year <= high_year)
     
     imdb_ggplot <- ggplot(viz_chart) +
-      geom_line(aes(x = release_year, y = score_average, color = type)) +
+      geom_line(aes(x = release_year, y = score_average, color = type, 
+                    text = paste0("Release Year: ", release_year,
+                                  "<br>IMDb Score Avg: ", round(score_average, 2))),
+                group = 1) +
       #scale_color_brewer(palette = "Set2") +
       labs(title = "Trends in IMDB Scores of Movies and Shows", x = "Release Year", 
            y = "IMDB Score", color = "Media Type")
     
-    ggplotly(imdb_ggplot)
+    ggplotly(imdb_ggplot, tooltip = "text")
   })
   
   # Age rating proportions over time
