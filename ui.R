@@ -92,7 +92,7 @@ IMDb_Scores <- tabPanel(
     each year, from 2000 to 2022.")
 )
 
-genre_prop_plot <- mainPanel(
+age_prop_plot <- mainPanel(
   plotlyOutput("age_prop_chart")
 )
 
@@ -107,11 +107,17 @@ age_sidebar <- sidebarPanel(
     sep = "")
 )
 
-genre_prop_tab <- tabPanel(
+age_prop_tab <- tabPanel(
   "Proportion of age rating over time",
   sidebarLayout(
-    age_sidebar, genre_prop_plot
-  )
+    age_sidebar, age_prop_plot
+  ),
+  h2("Explanation of Graph", align="left"),
+  p("This chart shows the distribution of age rating and their relative proportion
+    to each other in the years between 2000-2023. We choose this graph as we wanted 
+    to see how trend in the change in age ratings for movies and TV shows in recent years. 
+    It shows that in recent years, the proportion of content created for children and 
+    teens have decreased, compared to adult and unrated content.")
 )
 
 concl_panel <- tabPanel(
