@@ -6,7 +6,7 @@
  - [Hoda Ayad](mailto:hayad03@uw.edu)
  - [Brian Kim](mailto:briank27@uw.edu)
  
-**Link: Link to your Shiny App here**
+**https://hoda-ayad.shinyapps.io/final-project-hoda-ayad/**
 
 # Abstract
 This project focuses on identifying and analyzing trends in movies and TV shows available on Netflix as of July 2022. We aim to explore specific factors such as age certification proportions, the number of movies or shows within specific genres, and average IMDb scores of movies versus TV shows. By examining these trends, we can gain insights into audience preferences and reception, which can be valuable for streaming platforms and content creators.
