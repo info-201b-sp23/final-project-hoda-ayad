@@ -13,7 +13,20 @@ intro_panel <- tabPanel (
   "Introduction",
   titlePanel("Introduction"),
   
-  includeMarkdown("introduction.Rmd")
+  sidebarPanel(
+    img(src = "https://www.freepnglogos.com/uploads/netflix-logo-text-emblem-31.png", width = "100%", height = "100%"),
+    
+    br(),
+    
+    img(src = "https://www.freepnglogos.com/uploads/film-reel-png/film-reel-the-movies-owens-valley-12.png", width = "100%", height = "100%"),
+    width = 3
+  ),
+  
+  
+  mainPanel(
+    includeMarkdown("introduction.Rmd"),
+    width = 6
+  )
 
 )
 
@@ -109,7 +122,7 @@ concl_panel <- tabPanel(
   
 )
 ui <- navbarPage(
-  "Movie Stars to 5 Stars: Actor Credits as Indicators of IMDb Score",
+  "Movie and TV Series Trends on Netflix",
   intro_panel,
   genre_panel,
   genre_prop_tab,
