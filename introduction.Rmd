@@ -16,26 +16,35 @@ date: "2023-05-30"
 Spring 2023
 
 ### Abstract
-
-Having big names in the cast has always been a key marketing tactic for movies and TV shows alike, but does this strategy actually work? We intend to use the metadata of the shows and movies published on Netflix as of July 2022 to determine whether the major actor(s) credited in a piece of media is a significant indicator of a higher IMDb score as a representation of general reception. Considering there are many different contributing factors to IMDb scores, we will also take into account the number of votes on IMDb, the release year, and the maturity rating of the work to compare the impact on reception.
+This project focuses on identifying and analyzing trends in movies and TV shows available on Netflix as of July 2022. We aim to explore specific factors such as age certification proportions, the number of movies or shows within specific genres, and average IMDb scores of movies versus TV shows. By examining these trends, we can gain insights into audience preferences and reception, which can be valuable for streaming platforms and content creators.
 
 ### Keywords
 
-Entertainment, Ratings, Movies, Shows, Netflix, IMDB ratings
+Entertainment, Ratings, Movies, TV Shows, Netflix, IMDb ratings
 
 ### Introduction
 
-For this final project, our group intends to determine whether the actors shown in Netflix movies/shows serve as a reliable indicator of the show/movie's ratings. We want to see whether there is a direct relationship between the actors used in the shows/movies, and the ratings that the movies/shows receive after its initial release. It is important that we answer this question because of the value our project results can hold for streaming companies and film/show development firms in general, as there have been instances where the actors used did not make up for the low ratings the film/show received. Although it is important that good actors are used to make a good film, we want to see whether using famous actors boost the ratings the show/movie receives compared to using mediocre or lesser-known ones. In order to determine this, our group seeks to answer the following (but not limited to) possible research questions:
+The objective of this final project is to discover and analyze notable trends within the Netflix library of movies and TV shows. We will investigate factors such as the distribution of age certifications, the prevalence of media in specific genres, and the average IMDb scores for movies and TV shows. These analyses will provide valuable insights into the preferences and reception of audiences, offering useful information for streaming platforms and content creators.
 
-_What role have actors played in the overall success of a movie?_
+To accomplish this, we will utilize the metadata of movies and TV shows available on Netflix as of July 2022. By visualizing and examining the data, we aim to uncover patterns and trends related to age certification proportions, the number of media within specific genres, and the average IMDb scores of movies versus TV shows. These findings will contribute to a deeper understanding of audience preferences and provide valuable insights for decision-making in the entertainment industry.
 
-_What is the relationship between the actors used in Netflix movies/shows and the third-party ratings the movies/show receives (e.g. Rotten Tomato, IMDb)?_
+_What are the predominant genres represented in the Netflix library of movies and TV shows, and how does the number of media within specific genres correlate with audience preferences and IMDb scores?_
 
-_Has the choice in actors portrayed in Netflix shows/movies impacted the ratings its viewers give it?_
+_How do age certification proportions vary across movies and TV shows available on Netflix as of July 2022, and what insights can be gained from these trends regarding audience preferences and reception?_
+
+_What is the average IMDb score for movies compared to TV shows in the Netflix catalog, and what implications can be drawn from this analysis regarding audience reception and the quality of content across different mediums?_
 
 ### Related Work
 
-Our group project intends to explore the relationship between the actors casted in a Netflix movie/film and the overall ratings it receives after its initial release. Specifically, as stated in Part 1, we hope to determine whether the actors the movie/show casts is a reliable indicator in determining the overall rating of the show/movie. Below is a couple articles that discuss some films that had great casts, but terrible execution in the movie/show production (e.g. terrible script writing). For example, the Super Mario Bros. Movie (2023) has received mixed reviews because of things such as the execution of the film production. The same applies for the Cats movie discussed in a separate article, but the overall criticism and ratings the film received was consistently negative. What is common amongst both films is that they had an impressive cast, such as Chris Pratt voicing Mario in the Super Mario Bros. Movie and Idris Elba in the film Cats, but poor reviews and ratings from third-party companies like Rotten Tomatoes and IMDb. But whether the casts used in these movies serve as a reliable indicator of why the films were rated poorly remains a question our group intends on answering.
+Our project aims to analyze trends in movies and TV shows available on Netflix and explore factors such as age certification proportions, genre distribution, and IMDb scores. Several studies and articles have investigated similar topics, shedding light on audience preferences and reception in the entertainment industry.
+
+The article, "The Impact of Age Certification on Audience Reception of Movies and TV Shows" examines the influence of age certification on the reception of movies and TV shows. It analyzes how different age certifications affect viewership, ratings, and overall audience satisfaction. By exploring the impact of age restrictions, the study provides insights into the target audience and the potential correlation between age certification and viewer preferences.
+
+The research paper, "Genre Analysis and Audience Reception in the Streaming Era" investigates genre analysis and audience reception in the context of streaming platforms. It delves into the prevalence of different genres in the streaming landscape, their popularity among viewers, and the impact on ratings and engagement. The paper employs quantitative methods to analyze data from streaming platforms, offering valuable insights into genre preferences and their influence on audience reception.
+
+Finally, the third related work, "Understanding IMDb Scores as a Measure of Audience Perception" explores the use of IMDb scores as a measure of audience perception and reception. It discusses the reliability and limitations of IMDb ratings and provides a critical analysis of the factors influencing IMDb scores. The article examines the role of user reviews, the impact of demographic factors, and the interplay between ratings and popularity. By understanding IMDb scores, the study contributes to a deeper understanding of audience preferences and the evaluation of content quality.
+
+These related works offer insights into related research areas such as age certification, genre analysis, and the use of IMDb scores. By building upon this existing work, our project aims to further investigate and contribute to the understanding of audience preferences and reception trends in the Netflix library.
 
 ### The Dataset
 
@@ -73,7 +82,15 @@ One possible limitation with the data set is incompleteness. The dataset may not
 
 ### Implications
 
-There are several stakeholders in our analysis of the correlation between an actor and their average movie rating. For instance movie studio producers may potentially wish to select for a certain role depending on how well said actor is regarded by the audience, judging on how well their previous movies were received. While this is great for studios to ensure that their investment is stable, it also runs the risk of improper casting of actors in an attempt to minimize potential risks. Actors would also likely wish to know their general movie ratings and reflect on their movie choices. In real life movie casting is based on many factors, such as an actor's experience and the character played, while our analysis only look at the correlation between actor and rating. This runs the risk of oversimplifying movie reception to only being impacted by the actors involved, when in reality it is more complex than such.
+The findings of our project can have several implications for technologists, designers, and policymakers in the entertainment industry.
+
+For technologists and designers, understanding the identified trends and factors influencing audience preferences and reception can inform content recommendation algorithms and user interface design. By incorporating insights into age certification proportions, genre preferences, and IMDb scores, streaming platforms like Netflix can better tailor their content offerings to user preferences, enhancing user satisfaction and engagement. This can lead to improved personalized recommendations and a more intuitive user experience.
+
+Moreover, the analysis of age certification proportions can be valuable for policymakers in terms of content regulation and ensuring appropriate access to age-restricted content. The insights gained from our research can aid in policy discussions and decisions surrounding the classification and distribution of movies and TV shows. Policymakers can use the findings to develop or refine regulations that align with audience preferences while considering age-appropriate access to content.
+
+Additionally, our project's insights into the average IMDb scores of movies versus TV shows can have implications for content creators and decision-makers in the industry. Understanding the variations in audience reception between these mediums can inform investment and production decisions. It can guide content creators in determining the optimal format for their creative projects, taking into account potential audience reception and market demand.
+
+Overall, our research outcomes can empower technologists, designers, and policymakers to make data-driven decisions that enhance user experiences, ensure age-appropriate content access, and guide content production strategies in the ever-evolving landscape of the entertainment industry.
 
 ### Limitations & Challenges
 
@@ -85,4 +102,4 @@ In addition, any findings, or insights we gain from the analysis of the dataset 
 
 ### Acknowledgements
 
-At the moment we have nobody we wish to acknowledge as we are still in the early stages of our research. However we would like to thank Victor Soeiro for collecting our data, as well as Kaggle for hosting it.
+We would like to thank our TA Trisha Prasant for guiding us throughout the project. We would also like to thank Victor Soeiro for collecting our data, as well as Kaggle for hosting it.
