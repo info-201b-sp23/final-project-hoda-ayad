@@ -48,37 +48,37 @@ These related works offer insights into related research areas such as age certi
 
 ### The Dataset
 
-> Where did you find the data? Please include a link to the data source
+Where did you find the data? Please include a link to the data source
 
-<https://www.kaggle.com/datasets/victorsoeiro/netflix-tv-shows-and-movies?select=titles.csv>
+_<https://www.kaggle.com/datasets/victorsoeiro/netflix-tv-shows-and-movies?select=titles.csv>_
 
-> Who collected the data?
+Who collected the data?
 
-Victor Soeiro
+_Victor Soeiro_
 
-> How was the data collected or generated?
+How was the data collected or generated?
 
-All data was collected utilizing the website JustWatch website which provides what streaming services has what shows or movies, IMDB rating, genre, runtime, age restriction, synopsis, and the cast. The atuhor states that the JustWatch website uses ajax to consume their API using GraphQL queries. The data returns as a JSON file. To get the data they need, they used a request package. They created a reference code for the streaming service Netflix to pass it as a GraphQL variable. The website's API uses only one endpoint to get the queries. So, the author changed the parameters and the query to collect the streamings data. The website prevents a robot to get their data without specifying a User-Agent. To bypass, they created request headers. They then created post data and manipulated it to specify which streaming service it will get the data from. Because some streamings have over 3k movies and shows, the query only returns a total of 1960 results, which is not enough to collect all data. The author used the released year filter to create a cluster of items with below 1960 items. They created a loop function to get all titles available on a given streaming service. The returned data the author got was well formatted but was nested. They parse the data to a unique dictionary containing the correctly fields names. With all the functions defined, they group together to get all titles available on a streaming. Finally, created a function to get all titles from all the streaming services.
+_All data was collected utilizing the website JustWatch website which provides what streaming services has what shows or movies, IMDB rating, genre, runtime, age restriction, synopsis, and the cast. The atuhor states that the JustWatch website uses ajax to consume their API using GraphQL queries. The data returns as a JSON file. To get the data they need, they used a request package. They created a reference code for the streaming service Netflix to pass it as a GraphQL variable. The website's API uses only one endpoint to get the queries. So, the author changed the parameters and the query to collect the streamings data. The website prevents a robot to get their data without specifying a User-Agent. To bypass, they created request headers. They then created post data and manipulated it to specify which streaming service it will get the data from. Because some streamings have over 3k movies and shows, the query only returns a total of 1960 results, which is not enough to collect all data. The author used the released year filter to create a cluster of items with below 1960 items. They created a loop function to get all titles available on a given streaming service. The returned data the author got was well formatted but was nested. They parse the data to a unique dictionary containing the correctly fields names. With all the functions defined, they group together to get all titles available on a streaming. Finally, created a function to get all titles from all the streaming services._
 
-> Why was the data collected?
+Why was the data collected?
 
-The data set was collected as a web scrapping project. The author wanted to analyze data in fields that they were interested in such as movies, shows, games, and anime.
+_The data set was collected as a web scrapping project. The author wanted to analyze data in fields that they were interested in such as movies, shows, games, and anime._
 
-> How many observations (rows) are in your data?
+How many observations (rows) are in your data?
 
-For the credits data set, there are 54314 unique observations. For the movies data set, there are 5850 unique observations.
+_For the credits data set, there are 54314 unique observations. For the movies data set, there are 5850 unique observations._
 
-> How many features (columns) are in the data?
+How many features (columns) are in the data?
 
-There are a total 20 columns. For the credits data set, there are 5 columns. For the movies data set, there are 15 columns.
+_There are a total 20 columns. For the credits data set, there are 5 columns. For the movies data set, there are 15 columns._
 
-> What, if any, ethical questions or questions of power do you need to consider when working with this data?
+What, if any, ethical questions or questions of power do you need to consider when working with this data?
 
-There seems to be no ethical questions or questions of power to consider when working with the data.
+_There seems to be no ethical questions or questions of power to consider when working with the data._
 
-> What are possible limitations or problems with this data? (at least 200 words)
+What are possible limitations or problems with this data? (at least 200 words)
 
-One possible limitation with the data set is incompleteness. The dataset may not contain all of the titles available on Netflix, as it is based on a web-scraping process that may have missed certain titles or not captured all of the relevant information for each title. Another limitation might be accuracy. The information provided for each title, such as the release year, genre, and rating, may not always be accurate or up-to-date. Additionally, there may be errors or inconsistencies in the data due to the web-scraping process. In addition, language may be another limitation. Since the dataset is primarily focused on content available in English, it may limit its usefulness for analyzing Netflix's offerings in non-English-speaking countries. The dataset does not include a lot of metadata about each title, such as plot summaries, which could limit the types of analyses that can be performed. There may also be some bias in the data set as well. It may be biased towards certain types of content or genres, depending on the web-scraping process used to collect the data. Finally, the lack of context may deem a problem. The dataset does not provide any context about how Netflix categorizes or recommends content to users, which could limit the usefulness of the data for understanding how Netflix's recommendation algorithm works.
+_One possible limitation with the data set is incompleteness. The dataset may not contain all of the titles available on Netflix, as it is based on a web-scraping process that may have missed certain titles or not captured all of the relevant information for each title. Another limitation might be accuracy. The information provided for each title, such as the release year, genre, and rating, may not always be accurate or up-to-date. Additionally, there may be errors or inconsistencies in the data due to the web-scraping process. In addition, language may be another limitation. Since the dataset is primarily focused on content available in English, it may limit its usefulness for analyzing Netflix's offerings in non-English-speaking countries. The dataset does not include a lot of metadata about each title, such as plot summaries, which could limit the types of analyses that can be performed. There may also be some bias in the data set as well. It may be biased towards certain types of content or genres, depending on the web-scraping process used to collect the data. Finally, the lack of context may deem a problem. The dataset does not provide any context about how Netflix categorizes or recommends content to users, which could limit the usefulness of the data for understanding how Netflix's recommendation algorithm works._
 
 ### Implications
 
