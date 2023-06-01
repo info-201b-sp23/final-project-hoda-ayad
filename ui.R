@@ -18,20 +18,16 @@ recent_titles_df <- titles_df %>%
 intro_panel <- tabPanel (
   "Introduction",
   titlePanel("Introduction"),
-  
   sidebarPanel(
     img(src = "https://www.freepnglogos.com/uploads/netflix-logo-text-emblem-31.png", width = "100%", height = "100%"),
-    
-    br(),
-    
     img(src = "https://www.freepnglogos.com/uploads/film-reel-png/film-reel-the-movies-owens-valley-12.png", width = "100%", height = "100%"),
     width = 1
+    
   ),
-  
   
   mainPanel(
     includeMarkdown("introduction.Rmd"),
-    width = 9
+    width = 10
   )
 
 )
