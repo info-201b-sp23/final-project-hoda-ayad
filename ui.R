@@ -1,8 +1,14 @@
 source('server.R')
+library(dplyr)
 library(tidyr)
+library(bslib)
+library(markdown)
 
 titles_df <- read.csv("titles.csv")
 credits_df <- read.csv("credits.csv")
+
+my_theme <- bs_theme(version = 4, bootswatch = "flatly", primary = "#000000", success = "#E50914")
+
 
 recent_titles_df <- titles_df %>% 
   group_by(release_year, type) %>%
@@ -32,11 +38,14 @@ intro_panel <- tabPanel (
 
 # Genre Chart Sidebar
 genre_sidebar <- sidebarPanel(
-  checkboxGroupInput(
-    "type_select",
-    label = "Select type(s) to include",
-    choices = list("Movies" = "MOVIE", "Shows" = "SHOW"),
-    selected = "MOVIE"
+  tags$div(class = "form-check-inline",
+    checkboxGroupInput(
+      "type_select",
+      label = "Select type(s) to include",
+      choices = list("Movies" = "MOVIE", "Shows" = "SHOW"),
+      selected = "MOVIE",
+      inline = TRUE
+    )
   ),
   
   selectInput(
@@ -55,12 +64,13 @@ genre_main <- mainPanel(
 )
 
 genre_panel <- tabPanel(
-  "Explore Genres",
+  "Genres",
   titlePanel("How does Genre vary by Release Year?"),
-  p("Some description"),
   sidebarLayout(
     genre_sidebar, genre_main
-  )
+  ),
+  h2("Explanation of Graph", align="left"),
+  p("As media is released over time, what genres dominate in popularity (so that Netflix will buy the rights to them)? This graph explores the release of different genres from 2000-2023, including movies and/or shows. The data is not normalized considering that media is assigned multiple categories and therefore overlapping.")
 )
 
 mvs_sidebar <- sidebarPanel(
@@ -79,8 +89,8 @@ mvs_main <- mainPanel(
 )
 
 IMDb_Scores <- tabPanel(
-  "IMDB Scores of Movies and Shows",
-  h1("Visualization of IMDB Scores of Shows and Movies", align="center"),
+  "IMDB Scores",
+  titlePanel("Visualization of IMDB Scores of Shows and Movies"),
   sidebarLayout(
     mvs_sidebar, mvs_main
   ),
@@ -108,7 +118,8 @@ age_sidebar <- sidebarPanel(
 )
 
 age_prop_tab <- tabPanel(
-  "Proportion of age rating over time",
+  "Age Rating",
+  titlePanel("Proportion of Age Rating Over Time"),
   sidebarLayout(
     age_sidebar, age_prop_plot
   ),
@@ -133,6 +144,7 @@ ui <- navbarPage(
   genre_panel,
   age_prop_tab,
   IMDb_Scores,
-  concl_panel
+  concl_panel,
+  theme = my_theme
 )
 

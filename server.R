@@ -27,14 +27,17 @@ server <- function(input, output) {
       filter(!!type_filter, !!genre_filter) %>% 
       summarise(count = n()) 
     
-    genre_ggplot <- ggplot(chart_df, aes(release_year, count, color = genres)) +
-      geom_line(stat = "summary", fun = sum) +
+    genre_ggplot <- ggplot(chart_df, aes(release_year, count, color = genres, 
+                                         text = paste0("Release Year: ", release_year,
+                                                      "<br>Genre: ", genres,
+                                                      "<br>Count: ", count))) +
+      geom_line(stat = "summary", fun = sum, group = 1) +
       labs(title = "Genres of Netflix Media over Time",
            subtitle = "Includes only media released after the year 2000",
            x = "Release Year",
            y = "Number of Media on Netflix",
            color = "Genre")
-    ggplotly(genre_ggplot)
+    ggplotly(genre_ggplot, tooltip = "text")
   })
 
   # Trends in Movies and Shows production in 21st century plot
@@ -53,7 +56,7 @@ server <- function(input, output) {
     
     imdb_ggplot <- ggplot(viz_chart) +
       geom_line(aes(x = release_year, y = score_average, color = type)) +
-      scale_color_brewer(palette = "Set2") +
+      #scale_color_brewer(palette = "Set2") +
       labs(title = "Trends in IMDB Scores of Movies and Shows", x = "Release Year", 
            y = "IMDB Score", color = "Media Type")
     
@@ -92,17 +95,21 @@ server <- function(input, output) {
       mutate(prop=sum/total, .before = total)
     
     age_cert_prop_chart <- ggplot(age_cert_per_year, 
-                         aes(x=release_year, y=prop, fill=age_certification)) +
+                         aes(x=release_year, y=prop, fill=age_certification,
+                             text = paste0("Release Year: ", release_year,
+                                          "<br>Proportion: ", round(prop*100), "%",
+                                          "<br>Age Certification: ", age_certification))) +
       
       geom_bar(position="stack", stat="identity")+
       scale_y_continuous(labels = scales::percent) +
       scale_x_continuous(breaks = seq(input$genre_prop_year_selection[1], 
                                       input$genre_prop_year_selection[2], 
                                       ceiling((input$genre_prop_year_selection[2] - input$genre_prop_year_selection[1]) / 4))) +
-      labs(x = "Year", y = "Proportion",
-           title = "Age rating proportion")
+      labs(x = "Release Year", y = "Proportion",
+           title = "Age-Rating Proportions Over Time",
+           fill = "Age Certification")
     
-    ggplotly(age_cert_prop_chart)
+    ggplotly(age_cert_prop_chart, tooltip = "text")
   })
 
 }
