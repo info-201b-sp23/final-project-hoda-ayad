@@ -85,7 +85,7 @@ genre_prop_plot <- mainPanel(
 
 age_sidebar <- sidebarPanel(
   slider_widget <- sliderInput(
-    inputId = "year_selection",
+    inputId = "genre_prop_year_selection",
     label = "Year",
     min = min(recent_titles_df$release_year),
     max = max(recent_titles_df$release_year),
