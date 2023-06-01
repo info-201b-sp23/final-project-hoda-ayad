@@ -25,7 +25,7 @@ intro_panel <- tabPanel (
     br(),
     
     img(src = "https://www.freepnglogos.com/uploads/film-reel-png/film-reel-the-movies-owens-valley-12.png", width = "100%", height = "100%"),
-    width = 1
+    width = 3
   ),
   
   
