@@ -28,7 +28,7 @@ server <- function(input, output) {
       summarise(count = n()) 
     
     genre_ggplot <- ggplot(chart_df, aes(release_year, count, color = genres, 
-                                         text = paste("Release Year: ", release_year,
+                                         text = paste0("Release Year: ", release_year,
                                                       "<br>Genre: ", genres,
                                                       "<br>Count: ", count))) +
       geom_line(stat = "summary", fun = sum, group = 1) +
@@ -95,7 +95,10 @@ server <- function(input, output) {
       mutate(prop=sum/total, .before = total)
     
     age_cert_prop_chart <- ggplot(age_cert_per_year, 
-                         aes(x=release_year, y=prop, fill=age_certification)) +
+                         aes(x=release_year, y=prop, fill=age_certification,
+                             text = paste0("Release Year: ", release_year,
+                                          "<br>Proportion: ", round(prop*100), "%",
+                                          "<br>Age Certification: ", age_certification))) +
       
       geom_bar(position="stack", stat="identity")+
       scale_y_continuous(labels = scales::percent) +
@@ -106,7 +109,7 @@ server <- function(input, output) {
            title = "Age-Rating Proportions Over Time",
            fill = "Age Certification")
     
-    ggplotly(age_cert_prop_chart)
+    ggplotly(age_cert_prop_chart, tooltip = "text")
   })
 
 }
