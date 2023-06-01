@@ -28,7 +28,7 @@ The objective of this final project is to discover and analyze notable trends wi
 
 To accomplish this, we will utilize the metadata of movies and TV shows available on Netflix as of July 2022. By visualizing and examining the data, we aim to uncover patterns and trends related to age certification proportions, the number of media within specific genres, and the average IMDb scores of movies versus TV shows. These findings will contribute to a deeper understanding of audience preferences and provide valuable insights for decision-making in the entertainment industry.
 
-_What are the predominant genres represented in the Netflix library of movies and TV shows, and how does the number of media within specific genres correlate with audience preferences and IMDb scores?_
+_What are the predominant genres represented in the Netflix library of movies and TV shows, and how does the number of media within specific genres correlate with audience preferences?_
 
 _How do age certification proportions vary across movies and TV shows available on Netflix as of July 2022, and what insights can be gained from these trends regarding audience preferences and reception?_
 

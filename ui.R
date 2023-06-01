@@ -131,7 +131,7 @@ ui <- navbarPage(
   "Movie and TV Series Trends on Netflix",
   intro_panel,
   genre_panel,
-  genre_prop_tab,
+  age_prop_tab,
   IMDb_Scores,
   concl_panel
 )
